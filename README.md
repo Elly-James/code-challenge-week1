@@ -32,16 +32,19 @@ This program calculates an employee's net Salary by using the Kenyan Tax Revenue
    
   3. Then first the program deducts NHIF from the gross salary according to the category of the user gross salary e.g from 0-5999 the program deducts 150 and above 99999 the program deducts 1700.
   4. The NHIF deductions are fixed as stipulated in [click here](https://www.aren.co.ke/payroll/taxrates.htm) and the program returns the salary minus the NHIF deductions.
-  5. Next the program calculates the PAYE deductions *pay as you earn*, where the the deductions are based accordint to the employee's category. e,g for a gross salary of upto 24000 the deduction is 10% and above 800000 the deductions are 35%. Here it returns the total paye deductions
-  6. Next the program calculates the NSSF according to the given gross Salary of the employee.
-  7. Contributions to NSSF are divided into Tier I and Tier II. The employer and employee each contribute 6% of pensionable pay, subject to the following monthly limits.
+  5. Next the program calculates the PAYE deductions *pay as you earn*, where the the deductions are based according to the employee's category. 
+  6. If the salary exceeds a bracket's upper limit, it calculates the tax for the excess amount and reduce the salary to the upper limit of the bracket.
+  7. It continues to the next bracket, calculate the tax for that range, and repeat until all applicable brackets are processed.
+     e,g for someone earning 25,000. It will calculate 10% of the first bracket and the remaining 1000 it will calculate 25% of it, then prints the output.
+  1. Next the program calculates the NSSF according to the given gross Salary of the employee.
+  2. Contributions to NSSF are divided into Tier I and Tier II. The employer and employee each contribute 6% of pensionable pay, subject to the following monthly limits.
       
       * **Tier 1** upto 7000
       * **Tier 2** upto 36000
       * 
   Now if an employee earn 7000, it will only fall under the tier 1 and the 6% of it will be deducted to NSSF. For a person earning 40,000. Both the tiers will be calculated tier 1 7000 and tier 2 for 29,000. Since we only want a range of 0-36,000.
 
-  8. The program finaly gives all deductions and takes the gross salary minus all the deductions and provides the net salary for the user.
+  1. The program finaly gives all deductions and takes the gross salary minus all the deductions and provides the net salary for the user.
 
 ## Prerequisites
 
