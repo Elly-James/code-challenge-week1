@@ -55,18 +55,34 @@ function calculateNhif(grossSalary) {
 
 // PAYE Calculation
 function calculatePaye(grossSalary) {  //This function calculates the amount of paye an employee pays for the grosssalary category
+                                        //This function ensures that the grosssalary is checked in all the categories it applys to
     
-    if (grossSalary <= 24000) {
-        return grossSalary * 0.10; // 10% for up to 24,000
-    } else if (grossSalary <= 32333) {
-        return (grossSalary - 24000) * 0.25; // 25% for 24,001 to 32,333
-    } else if (grossSalary <= 500000) {
-        return (grossSalary - 32333) * 0.30; // 30% for 32,334 to 500,000
-    } else if (grossSalary <= 800000) {
-        return (grossSalary - 500000) * 0.325; // 32.5% for 500,001 to 800,000
-    } else {
-        return (grossSalary - 800000) * 0.35; // 35% for above 800,000
-    }
+        let tax = 0; // Initializing tax to 0
+
+    
+        if (grossSalary > 800000) {
+            tax += (grossSalary - 800000) * 0.35; // Tax for above 800,000
+            grossSalary = 800000;
+        }
+        if (grossSalary > 500000) {
+            tax += (grossSalary - 500000) * 0.325; // Tax for 500,001 to 800,000
+            grossSalary = 500000;
+        }
+        if (grossSalary > 32333) {
+            tax += (grossSalary - 32333) * 0.30; // Tax for 32,334 to 500,000
+            grossSalary = 32333;
+        }
+        if (grossSalary > 24000) {
+            tax += (grossSalary - 24000) * 0.25; // Tax for 24,001 to 32,333
+            grossSalary = 24000;
+        }
+        if (grossSalary > 0) {
+            tax += grossSalary * 0.10; // Tax for up to 24,000
+        }
+    
+        return Math.floor(tax); //Rounds down the result to remove any decimals
+    
+    
 }
 
 
